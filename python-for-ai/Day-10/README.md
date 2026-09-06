@@ -1,6 +1,6 @@
-# Day-09 Rock Paper Scissors Game 
+# Day-10 Rock Paper Scissors Game 
 
-After practicing file handling with the Books Manager, I built a fun interactive project — a **Rock Paper Scissors game**.  
+I built a fun interactive project — a **Rock Paper Scissors game**.  
 This program uses Python’s `random` module to let the computer pick a choice, and you play against it with emoji‑based output.
 
 ## Features:
