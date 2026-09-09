@@ -29,20 +29,19 @@ def show():
         for line in f:
             print(line.strip())
 
-found = False
+def book_title_extractor(line):
+    parts = line.strip().split('|')
+    title = parts[0].replace("Book name: ","").strip()
+    return title
+
 def search(book_to_search):
     found_book = []
     with open("test_file.txt","r") as f:
         for line in f:
-            parts = line.strip().split('|')
-            title = parts[0].replace("Book name: ","").strip()
+            title = book_title_extractor(line)
             if title == book_to_search:
-                found = True
                 found_book.append(line.strip())
-    if found != True:
-        print(f"There is no book called {book_to_search}")
-    else:
-        print(found_book)
+
     return found_book
 
 while(1):
@@ -75,7 +74,14 @@ while(1):
     elif choice_of_work == 4:
         book_to_search = input("Enter the book name: ")
         if book_to_search != "":
-            search(book_to_search)
+            try:
+                result = search(book_to_search)
+                if result:
+                    print(result)
+                else:
+                    print("Book not found!")
+            except FileNotFoundError:
+                print("caller:The file is missing.")
         else:
             print("please enter valid book name")
     elif choice_of_work == 5:
